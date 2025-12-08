@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect ,Suspense} from 'react';
 import { Search, Filter, Grid, List, ChevronDown, Star, Heart, ShoppingBag } from 'lucide-react';
 import Header from '@/app/components/Header';
 import { useSearchParams } from 'next/navigation';
@@ -540,7 +540,7 @@ useEffect(() => {
         </div>
       </div>
     </div> */}
-
+ <Suspense fallback={<div className="text-center py-10">Loading products...</div>}>
 <div className="min-h-screen bg-gray-50">
   <div className="max-w-7xl mx-auto px-4 py-4">
     {/* Header Controls */}
@@ -731,6 +731,7 @@ useEffect(() => {
     </div>
   </div>
 </div>
+</Suspense>
 
     </>
   );
