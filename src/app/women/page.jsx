@@ -4,6 +4,7 @@ import SalesCarousel from './components/salesCarousel';
 import ShopByCategory from './components/ShopByCategory';
 import Header from '../components/Header';
 import FeaturedProducts from './components/FeaturedProducts';
+import { womenData } from './components/womenData';
 
 
 const WomensPage = () => {
@@ -13,26 +14,31 @@ const WomensPage = () => {
     categories: []
 
   })
-  useEffect(()=>{
-    const fetchData=async()=>{
-try{
-  const response=await fetch ("http://127.0.0.1:8000/store/women/",{
-    credentials:"include",
-  });
-  const data=await response.json();
-  console.log("women  data",data);
-  console.log("sakes women ",data.salesCarousel);
-  setStoreData(data);
-}
-catch(error)
-{
-  console.error("Failed to fetch carousel data:", error);
+//   useEffect(()=>{
+//     const fetchData=async()=>{
+// try{
+//   const response=await fetch ("http://127.0.0.1:8000/store/women/",{
+//     credentials:"include",
+//   });
+//   const data=await response.json();
+//   console.log("women  data",data);
+//   console.log("sakes women ",data.salesCarousel);
+//   setStoreData(data);
+// }
+// catch(error)
+// {
+//   console.error("Failed to fetch carousel data:", error);
 
-}
-    };
-    fetchData();
-  },[]);
-  return (
+// }
+//     };
+//     fetchData();
+//   },[]);
+  
+useEffect(() => {
+  setStoreData(womenData);
+}, []);
+
+return (
     <main>
         <Header/>
       <SalesCarousel salesCarousel={storeData.salesCarousel} />

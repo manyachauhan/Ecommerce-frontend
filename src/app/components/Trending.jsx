@@ -113,28 +113,60 @@
 import React, { useState, useEffect, useRef } from "react";
 
 const Trending = () => {
-  const [trendingItems, setTrendingItems] = useState([]);
+  // const [trendingItems, setTrendingItems] = useState([]);
   const [recentlyViewed, setRecentlyViewed] = useState([]);
   const [csrfToken, setCsrfToken] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const carouselRef = useRef(null);
   const autoSlideRef = useRef(null);
 
+  const trendingItems = [
+    {
+      id: 1,
+      title: "Men's Jacket",
+      category: "Men",
+      image:
+        "https://plus.unsplash.com/premium_photo-1673735186578-1a6cd08b8100?w=900&auto=format&fit=crop&q=60",
+    },
+    {
+      id: 2,
+      title: "Women's Dress",
+      category: "Women",
+      image:
+        "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?q=80&w=3088&auto=format&fit=crop",
+    },
+    {
+      id: 3,
+      title: "Cute Baby Outfit",
+      category: "Baby",
+      image:
+        "https://images.unsplash.com/photo-1735417195510-72a06fce8e65?q=80&w=3087&auto=format&fit=crop",
+    },
+    {
+      id: 4,
+      title: "Fashion Accessories",
+      category: "Fashion",
+      image:
+        "https://images.unsplash.com/photo-1569388330292-79cc1ec67270?q=80&w=2940&auto=format&fit=crop",
+    },
+  ];
+
+
   // Fetch trending items
-  useEffect(() => {
-    const fetchTrending = async () => {
-      try {
-        const response = await fetch("http://127.0.0.1:8000/home/trending/", {
-          credentials: "include",
-        });
-        const data = await response.json();
-        setTrendingItems(data);
-      } catch (error) {
-        console.error("Failed to fetch trending data:", error);
-      }
-    };
-    fetchTrending();
-  }, []);
+  // useEffect(() => {
+  //   const fetchTrending = async () => {
+  //     try {
+  //       const response = await fetch("http://127.0.0.1:8000/home/trending/", {
+  //         credentials: "include",
+  //       });
+  //       const data = await response.json();
+  //       setTrendingItems(data);
+  //     } catch (error) {
+  //       console.error("Failed to fetch trending data:", error);
+  //     }
+  //   };
+  //   fetchTrending();
+  // }, []);
 
   useEffect(() => {
     const fetchCsrfToken = async () => {

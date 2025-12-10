@@ -5,6 +5,7 @@ import SalesCarousel from './components/salesCarousel';
 import ShopByCategory from './components/ShopByCategory';
 import Header from '../components/Header';
 import FeaturedProducts from './components/FeaturedProducts';
+import { mensData } from "./components/mensData";
 
 const MensPage = () => {
   const [storeData, setStoreData] = useState({
@@ -16,24 +17,30 @@ const MensPage = () => {
   const [error, setError] = useState(null);
 
 
-  useEffect(() => {
-    const fetchData = async () => {
+  // useEffect(() => {
+  //   const fetchData = async () => {
    
-      try {
-        const response = await fetch("http://127.0.0.1:8000/store/men/", {
-          credentials: "include", // Include cookies if needed
-        });
-        const data = await response.json();
-        console.log("men data",data);
-        setStoreData(data);
-        console.log("sakes carousl",storeData.salesCarousel);
-      } catch (error) {
-        console.error("Failed to fetch carousel data:", error);
-      }
-    };
+  //     try {
+  //       const response = await fetch("http://127.0.0.1:8000/store/men/", {
+  //         credentials: "include", // Include cookies if needed
+  //       });
+  //       const data = await response.json();
+  //       console.log("men data",data);
+  //       setStoreData(data);
+  //       console.log("sakes carousl",storeData.salesCarousel);
+  //     } catch (error) {
+  //       console.error("Failed to fetch carousel data:", error);
+  //     }
+  //   };
 
-    fetchData();
+  //   fetchData();
+  // }, []);
+  
+  useEffect(() => {
+    // Load frontend static data instead of API
+    setStoreData(mensData);
   }, []);
+  
   console.log("sakes carousl outside usefeect",storeData.salesCarousel);
 
   return (

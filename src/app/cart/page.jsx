@@ -138,9 +138,9 @@ const CartPage = () => {
     <>
     <Header/>
     <ProtectedRoute>
-    <div className="min-h-screen bg-gray-50">
+    {/* <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 py-8">
-        {/* Header */}
+    
         <div className="flex items-center justify-between mb-8">
           <button className="flex items-center text-gray-600 hover:text-gray-800">
             <ArrowLeft className="w-5 h-5 mr-2" />
@@ -153,7 +153,7 @@ const CartPage = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Cart Items */}
+   
           <div className="lg:col-span-2">
             <h2 className="text-2xl font-semibold text-gray-800 mb-6">
               Your Items ({totalItems})
@@ -164,18 +164,18 @@ const CartPage = () => {
                 <div key={item.id} className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-4">
-                      {/* Product Image */}
+             
                     
                       <img src={item.image} alt={item.name} className="w-20 h-20 object-cover rounded-lg" />
                       
-                      {/* Product Details */}
+                  
                       <div className="flex-1">
                         <h3 className="font-semibold text-gray-800 text-lg">{item.name}</h3>
                         <p className="text-gray-600 text-sm mt-1">
                           Color: {item.color} Size: {item.size}
                         </p>
                         
-                        {/* Quantity Controls */}
+                       
                         <div className="flex items-center mt-3 space-x-3">
                           <button
                             onClick={() => updateQuantity(item.id, item.quantity - 1)}
@@ -194,7 +194,7 @@ const CartPage = () => {
                       </div>
                     </div>
                     
-                    {/* Price and Remove */}
+                  
                     <div className="flex items-center space-x-4">
                       <div className="text-right">
                         <div className="text-2xl font-bold text-gray-800">
@@ -204,12 +204,7 @@ const CartPage = () => {
                           ${item.price.toFixed(2)} each
                         </div>
                       </div>
-                      {/* <button
-                        onClick={() => removeItem(item.id)}
-                        className="text-gray-400 hover:text-red-500 p-2"
-                      >
-                        <X className="w-5 h-5" />
-                      </button> */}
+                
 
 <button
   onClick={() => {
@@ -228,7 +223,7 @@ const CartPage = () => {
             </div>
           </div>
 
-          {/* Order Summary */}
+   
           <div className="lg:col-span-1">
             <div className="bg-white mt-14 rounded-lg shadow-sm border border-gray-200 p-6 sticky top-4">
               <h3 className="text-xl font-semibold text-gray-800 mb-6">Order Summary</h3>
@@ -256,9 +251,7 @@ const CartPage = () => {
                   <span className='text-black'>${total.toFixed(2)}</span>
                 </div>
                 
-                {/* <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-200 mt-6">
-                  Proceed to Checkout
-                </button> */}
+             
                 <button
   onClick={handleCheckout}
   className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-200 mt-6"
@@ -275,7 +268,7 @@ const CartPage = () => {
           </div>
         </div>
 
-        {/* Trust Badges */}
+  
         <div className="mt-12 bg-white rounded-lg shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-center space-x-8">
             <div className="flex items-center space-x-2">
@@ -295,10 +288,10 @@ const CartPage = () => {
       </div>
       {showConfirmModal && (
   <>
-    {/* Overlay: covers entire screen, semi-transparent black */}
+
     <div className="fixed inset-0 bg-black opacity-20 z-40"></div>
 
-    {/* Modal: centered content above overlay */}
+
     <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
       <div className="bg-white p-6 rounded-xl shadow-lg max-w-md w-full">
         <h3 className="text-lg font-semibold text-gray-800 mb-4">Remove Item</h3>
@@ -330,7 +323,207 @@ const CartPage = () => {
 
 
 
+    </div> */}
+
+<div className="min-h-screen bg-gray-50">
+  <div className="max-w-7xl mx-auto px-4 py-8">
+    {/* Header */}
+    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
+      <button className="flex items-center text-gray-600 hover:text-gray-800 text-sm sm:text-base">
+        <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+        Continue Shopping
+      </button>
+      <div className="flex items-center text-gray-800">
+        <ShoppingCart className="w-5 h-5 sm:w-6 sm:h-6 mr-2" />
+        <span className="text-lg sm:text-xl font-semibold">Shopping Cart</span>
+      </div>
     </div>
+
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      {/* Cart Items */}
+      <div className="lg:col-span-2">
+        <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-6">
+          Your Items ({totalItems})
+        </h2>
+
+        <div className="space-y-4">
+          {cartItems.map((item) => (
+            <div
+              key={item.id}
+              className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6"
+            >
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="flex items-start sm:items-center space-x-4 w-full">
+                  {/* Product Image */}
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-lg"
+                  />
+
+                  {/* Product Details */}
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-gray-800 text-base sm:text-lg">
+                      {item.name}
+                    </h3>
+                    <p className="text-gray-600 text-sm mt-1">
+                      Color: {item.color} Size: {item.size}
+                    </p>
+
+                    {/* Quantity Controls */}
+                    <div className="flex items-center mt-3 space-x-3">
+                      <button
+                        onClick={() =>
+                          updateQuantity(item.id, item.quantity - 1)
+                        }
+                        className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50"
+                      >
+                        <Minus className="w-4 h-4 text-gray-600" />
+                      </button>
+                      <span className="w-8 text-center font-medium text-sm sm:text-base">
+                        {item.quantity}
+                      </span>
+                      <button
+                        onClick={() =>
+                          updateQuantity(item.id, item.quantity + 1)
+                        }
+                        className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50"
+                      >
+                        <Plus className="w-4 h-4 text-gray-600" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Price and Remove */}
+                <div className="flex items-center justify-between sm:justify-end w-full sm:w-auto gap-4">
+                  <div className="text-right">
+                    <div className="text-lg sm:text-2xl font-bold text-gray-800">
+                      ${(item.price * item.quantity).toFixed(2)}
+                    </div>
+                    <div className="text-sm text-gray-500">
+                      ${item.price.toFixed(2)} each
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => {
+                      setItemToRemove(item);
+                      setShowConfirmModal(true);
+                    }}
+                    className="text-gray-400 hover:text-red-500 p-2"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Order Summary */}
+      <div className="lg:col-span-1">
+        <div className="bg-white mt-8 lg:mt-14 rounded-lg shadow-sm border border-gray-200 p-6 lg:sticky lg:top-4">
+          <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-6">
+            Order Summary
+          </h3>
+
+          <div className="space-y-4">
+            <div className="flex justify-between text-sm sm:text-base">
+              <span className="text-gray-600">Subtotal ({totalItems} items)</span>
+              <span className="font-semibold text-black">
+                ${subtotal.toFixed(2)}
+              </span>
+            </div>
+
+            <div className="flex justify-between text-sm sm:text-base">
+              <span className="text-gray-600">Shipping</span>
+              <span className="text-green-600 font-semibold">Free</span>
+            </div>
+
+            <div className="flex justify-between text-sm sm:text-base">
+              <span className="text-gray-600">Tax</span>
+              <span className="font-semibold text-black">${tax.toFixed(2)}</span>
+            </div>
+
+            <hr className="my-4" />
+
+            <div className="flex justify-between text-lg sm:text-xl font-bold">
+              <span className="text-gray-600">Total</span>
+              <span className="text-black">${total.toFixed(2)}</span>
+            </div>
+
+            <button
+              onClick={handleCheckout}
+              className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-200 mt-6 text-sm sm:text-base"
+            >
+              Proceed to Checkout
+            </button>
+
+            <p className="text-xs sm:text-sm text-gray-500 text-center mt-4">
+              Secure checkout with SSL encryption
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Trust Badges */}
+    <div className="mt-12 bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-12">
+        <div className="flex items-center space-x-2">
+          <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+          <span className="text-gray-700 text-sm sm:text-base">
+            Secure Payment
+          </span>
+        </div>
+        <div className="flex items-center space-x-2">
+          <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+          <span className="text-gray-700 text-sm sm:text-base">Free Returns</span>
+        </div>
+        <div className="flex items-center space-x-2">
+          <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+          <span className="text-gray-700 text-sm sm:text-base">24/7 Support</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* Confirm Modal */}
+  {showConfirmModal && (
+    <>
+      <div className="fixed inset-0 bg-black opacity-20 z-40"></div>
+      <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
+        <div className="bg-white p-6 rounded-xl shadow-lg max-w-md w-full">
+          <h3 className="text-lg font-semibold text-gray-800 mb-4">Remove Item</h3>
+          <p className="text-gray-600 mb-6 text-sm sm:text-base">
+            Are you sure you want to remove{" "}
+            <strong>{itemToRemove?.name}</strong> from the cart?
+          </p>
+
+          <div className="flex justify-end space-x-4">
+            <button
+              onClick={() => {
+                setShowConfirmModal(false);
+                setItemToRemove(null);
+              }}
+              className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 text-sm sm:text-base"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={confirmRemoveItem}
+              className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 text-sm sm:text-base"
+            >
+              Remove
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
+  )}
+</div>
+
     </ProtectedRoute>
     </>
   );
