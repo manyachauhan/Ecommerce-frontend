@@ -36,6 +36,7 @@ const BabyPage = () => {
   
 useEffect(() => {
   setStoreData(babyData);
+  
 }, []);
 
 return (
